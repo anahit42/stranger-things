@@ -7,5 +7,6 @@ module.exports = {
     ACCESS_TOKEN_SECRET: process.env.TWITTER_ACCESS_TOKEN_SECRET,
     API_KEY: process.env.TWITTER_API_KEY,
     API_SECRET: process.env.TWITTER_API_SECRET
-  }
+  },
+  TOPICS: ['Trump', 'ISIS', 'Esports', 'Lady Gaga']
 }
