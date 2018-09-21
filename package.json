@@ -1,0 +1,52 @@
+{
+  "name": "stranger-things",
+  "description": "Package for scraping twitter data",
+  "version": "0.0.1",
+  "author": "Anahit Vardanyan",
+  "bugs": {
+    "url": "https://github.com/anahit42/stranger-things/issues"
+  },
+  "contributors": [
+    {
+      "name": "Anahit Vardanyan",
+      "email": "vardanian.anahit@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "agenda": "2.0.2",
+    "bluebird": "3.5.2",
+    "mongoose": "5.2.3",
+    "twitter": "1.7.1"
+  },
+  "devDependencies": {
+    "eslint": "5.6.0",
+    "eslint-config-standard": "12.0.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "7.0.1",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-standard": "4.0.0",
+    "fixpack": "2.3.1",
+    "pre-commit": "1.2.2"
+  },
+  "homepage": "https://github.com/anahit42/stranger-things#readme",
+  "keywords": [
+    "scraping",
+    "twitter"
+  ],
+  "license": "GPL-3.0",
+  "main": "src/index.js",
+  "pre-commit": [
+    "pre-commit"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anahit42/stranger-things.git"
+  },
+  "scripts": {
+    "fix-package": "fixpack",
+    "lint": "./node_modules/.bin/eslint ./src --fix",
+    "lint-no-fix": "./node_modules/.bin/eslint ./src",
+    "pre-commit": "npm run lint-no-fix",
+    "start": "node ./src/index"
+  }
+}
