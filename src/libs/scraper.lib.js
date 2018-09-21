@@ -12,7 +12,7 @@ class ScraperLib {
    */
   static async scrapTweetsAboutTopic (topic) {
     try {
-      const scrapingData = await ScrapingsModel.getLastScrapingData()
+      const scrapingData = await ScrapingsModel.getLastScrapingData(topic)
 
       const options = scrapingData
         ? { q: topic, max_id: scrapingData.nextMaxId, result_type: 'recent', count: '100' }
@@ -22,11 +22,11 @@ class ScraperLib {
       const nextMaxId = ScraperLib.getNextMaxId(metadata)
 
       if (tweets.length) {
-        const tweetsData = ScraperLib.getTweetsCleanData(tweets)
+        const tweetsData = ScraperLib.getTweetsCleanData(tweets, topic)
 
         return Promise.all([
           TweetsModel.bulkCreate(tweetsData),
-          ScrapingsModel.create({ nextMaxId })
+          ScrapingsModel.create({ nextMaxId, topic })
         ])
       }
     } catch (error) {
@@ -36,15 +36,17 @@ class ScraperLib {
 
   /**
    * @param {Array} tweets
+   * @param {string} topic
    * @return {Array}
    * @description Get tweets clean data.
    */
-  static getTweetsCleanData (tweets) {
+  static getTweetsCleanData (tweets, topic) {
     return tweets.map((tweet) => {
       const { created_at, id, text, retweet_count, favorite_count, lang } = tweet
 
       return {
         tweetId: id,
+        topic,
         createdAt: created_at,
         scrapedAt: new Date(),
         favoriteCount: favorite_count,
