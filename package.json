@@ -1,6 +1,6 @@
 {
   "name": "stranger-things",
-  "description": "API for getting scrapped data",
+  "description": "Package for scraping twitter data",
   "version": "0.0.1",
   "author": "Anahit Vardanyan",
   "bugs": {
@@ -13,8 +13,9 @@
     }
   ],
   "dependencies": {
+    "agenda": "2.0.2",
     "bluebird": "3.5.2",
-    "mongoose": "5.2.16",
+    "mongoose": "5.2.3",
     "twitter": "1.7.1"
   },
   "devDependencies": {
@@ -29,8 +30,8 @@
   },
   "homepage": "https://github.com/anahit42/stranger-things#readme",
   "keywords": [
-    "API",
-    "scraping"
+    "scraping",
+    "twitter"
   ],
   "license": "GPL-3.0",
   "main": "src/index.js",
