@@ -1,0 +1,46 @@
+{
+  "name": "stranger-things",
+  "description": " API for getting scrapped data ",
+  "version": "0.0.1",
+  "author": "Anahit Vardanyan",
+  "bugs": {
+    "url": "https://github.com/anahit42/stranger-things/issues"
+  },
+  "contributors": [
+    {
+      "name": "Anahit Vardanyan",
+      "email": "vardanian.anahit@gmail.com"
+    }
+  ],
+  "devDependencies": {
+    "eslint": "5.6.0",
+    "eslint-config-standard": "12.0.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "7.0.1",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-standard": "4.0.0",
+    "fixpack": "2.3.1",
+    "pre-commit": "1.2.2"
+  },
+  "homepage": "https://github.com/anahit42/stranger-things#readme",
+  "keywords": [
+    "API",
+    "scraping"
+  ],
+  "license": "GPL-3.0",
+  "main": "src/index.js",
+  "pre-commit": [
+    "pre-commit"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anahit42/stranger-things.git"
+  },
+  "scripts": {
+    "fix-package": "fixpack",
+    "lint": "./node_modules/.bin/eslint ./src --fix",
+    "lint-no-fix": "./node_modules/.bin/eslint ./src",
+    "pre-commit": "npm run lint-no-fix",
+    "start": "node ./src/index"
+  }
+}
