@@ -1,7 +1,7 @@
 const Promise = require('bluebird')
 const Agenda = require('agenda')
 
-const { MONGODB } = require('../config')
+const { MONGODB, TOPICS } = require('../config')
 const { CONNECTION_STRING } = MONGODB
 
 /**
@@ -19,14 +19,9 @@ class ScraperJob {
   static startScraping (job, done) {
     console.log(' Scarping tweets at', new Date())
 
-    return Promise.all([
-      ScraperLib.scrapTweetsAboutTopic('Trump'),
-      ScraperLib.scrapTweetsAboutTopic('ISIS'),
-      ScraperLib.scrapTweetsAboutTopic('Esports'),
-      ScraperLib.scrapTweetsAboutTopic('Lady Gaga')
-    ])
-      .then(() => done())
-      .catch(done)
+    const promises = TOPICS.map((topic) => ScraperLib.scrapTweetsAboutTopic(topic))
+
+    return Promise.all(promises).then(() => done()).catch(done)
   }
 
   /**
