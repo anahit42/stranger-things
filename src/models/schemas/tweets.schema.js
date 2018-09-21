@@ -3,6 +3,7 @@ const { Schema } = mongoose
 
 const TweetsSchema = new Schema({
   tweetId: String,
+  topic: String,
   createdAt: Date,
   scrapedAt: Date,
   favoriteCount: Number,
