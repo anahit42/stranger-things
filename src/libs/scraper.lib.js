@@ -15,8 +15,8 @@ class ScraperLib {
       const scrapingData = await ScrapingsModel.getLastScrapingData()
 
       const options = scrapingData
-        ? { q: topic, max_id: scrapingData.nextMaxId, result_type: 'recent', count: '1' }
-        : { q: topic, result_type: 'recent', count: '1' }
+        ? { q: topic, max_id: scrapingData.nextMaxId, result_type: 'recent', count: '100' }
+        : { q: topic, result_type: 'recent', count: '100' }
 
       const { tweets, metadata } = await TwitterLib.getTweets(options)
       const nextMaxId = ScraperLib.getNextMaxId(metadata)
