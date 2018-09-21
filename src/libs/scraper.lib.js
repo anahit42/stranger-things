@@ -42,11 +42,12 @@ class ScraperLib {
    */
   static getTweetsCleanData (tweets, topic) {
     return tweets.map((tweet) => {
-      const { created_at, id, text, retweet_count, favorite_count, lang } = tweet
+      const { created_at, id, text, retweet_count, favorite_count, lang, user } = tweet
 
       return {
         tweetId: id,
         topic,
+        userId: user.id,
         createdAt: created_at,
         scrapedAt: new Date(),
         favoriteCount: favorite_count,
