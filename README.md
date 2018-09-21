@@ -1,3 +1,3 @@
 # stranger-things
 
-API for getting scrapped data
+Package for scraping twitter data
