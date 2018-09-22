@@ -6,6 +6,24 @@ class StreamDataParsingError extends Error {
   }
 }
 
+class TweetsBulkCreateError extends Error {
+  constructor (message) {
+    super()
+    this.message = message
+    this.name = this.constructor.name
+  }
+}
+
+class TweetCreateError extends Error {
+  constructor (message) {
+    super()
+    this.message = message
+    this.name = this.constructor.name
+  }
+}
+
 module.exports = {
-  StreamDataParsingError
+  StreamDataParsingError,
+  TweetsBulkCreateError,
+  TweetCreateError
 }
