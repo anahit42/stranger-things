@@ -3,6 +3,9 @@ const Twitter = require('twitter')
 const { TWITTER } = require('../config')
 const { ACCESS_TOKEN, ACCESS_TOKEN_SECRET, API_KEY, API_SECRET } = TWITTER
 
+const { ErrorsUtil } = require('../utils')
+const { StreamDataParsingError } = ErrorsUtil
+
 const { TweetsModel } = require('../models')
 
 class TwitterStreamLib {
@@ -15,11 +18,20 @@ class TwitterStreamLib {
 
     stream.on('data', (data) => {
       const tweetData = TwitterStreamLib.getTweetCleanData(data, topic)
+      const { tweetId } = tweetData
 
-      TweetsModel.create(tweetData).catch(console.error)
+      return TweetsModel.getTweetById(tweetId)
+        .then((tweet) => {
+          if (!tweet) {
+            return TweetsModel.create(tweetData)
+          }
+        })
     })
 
-    stream.on('error', (error) => console.log(error.message))
+    stream.on('error', (error) => {
+      const _error = new StreamDataParsingError(error.message)
+      console.log(`\n ${_error.name}: ${_error.message}`)
+    })
   }
 
   /**
