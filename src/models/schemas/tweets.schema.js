@@ -4,6 +4,7 @@ const { Schema } = mongoose
 const TweetsSchema = new Schema({
   tweetId: {
     type: String,
+    index: true,
     unique: true
   },
   topic: {

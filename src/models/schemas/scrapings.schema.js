@@ -3,7 +3,10 @@ const { Schema } = mongoose
 
 const ScrapingsSchema = new Schema({
   nextMaxId: String,
-  topic: String
+  topic: {
+    type: String,
+    index: true
+  }
 }, {
   timestamps: true
 })
