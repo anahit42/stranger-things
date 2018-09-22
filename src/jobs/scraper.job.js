@@ -17,7 +17,7 @@ class ScraperJob {
    * @description Function to define as scraping job.
    */
   static startScraping (job, done) {
-    console.log(' Scarping tweets at', new Date())
+    console.log('\n Scarping tweets at', new Date())
 
     const promises = TOPICS.map((topic) => ScraperLib.scrapTweetsAboutTopic(topic))
 
