@@ -6,7 +6,10 @@ const TweetsSchema = new Schema({
     type: String,
     unique: true
   },
-  topic: String,
+  topic: {
+    type: String,
+    index: true
+  },
   userId: String,
   createdAt: Date,
   scrapedAt: Date,
