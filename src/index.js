@@ -1,7 +1,9 @@
 const { ScraperJob } = require('./jobs')
+const TwitterStreamLib = require('./libs/twitter-stream.lib')
+
 const { MongooseConnection } = require('./storages')
 
-const { MONGODB } = require('./config')
+const { MONGODB, TOPICS } = require('./config')
 
 /**
  * @description Init Mongoose connection.
@@ -9,3 +11,5 @@ const { MONGODB } = require('./config')
 MongooseConnection.init(MONGODB.CONNECTION_STRING)
 
 ScraperJob.start()
+
+TwitterStreamLib.followTwitterStreams(TOPICS)
