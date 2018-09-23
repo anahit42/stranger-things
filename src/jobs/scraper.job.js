@@ -7,7 +7,7 @@ const { CONNECTION_STRING } = MONGODB
 /**
  * @description DeprecationWarning is because of agenda lib not setting { useNewUrlParser: true } in Mongo connection.
  */
-const agenda = new Agenda({ db: { address: CONNECTION_STRING, collection: 'jobs' } })
+const agenda = new Agenda({ db: { address: CONNECTION_STRING, collection: 'jobs', options: { useNewUrlParser: true } } })
 
 const ScraperLib = require('../libs/scraper.lib')
 
